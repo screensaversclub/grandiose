@@ -1,13 +1,13 @@
 export interface AudioFrame {
   type: 'audio'
-  audioFormat: AudioFormat
-  referenceLevel: number
+  // audioFormat: AudioFormat
+  // referenceLevel: number
   sampleRate: number // Hz
   channels: number
   samples: number
   channelStrideInBytes: number
-  timestamp: [number, number] // PTP timestamp
-  timecode: [number, number] // timecode as PTP value
+  // timestamp: [number, number] // PTP timestamp
+  // timecode: [number, number] // timecode as PTP value
   data: Buffer
 }
 
