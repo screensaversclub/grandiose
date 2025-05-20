@@ -216,7 +216,7 @@ napi_value send(napi_env env, napi_callback_info info) {
 
 void audioSendExecute(napi_env env, void* data) {
   sendDataCarrier* c = (sendDataCarrier*) data;
-  NDIlib_send_send_audio_v3(c->send, &c->audioFrame);
+  NDIlib_send_send_audio_v2(c->send, &c->audioFrame);
 }
 
 void videoSendExecute(napi_env env, void* data) {
@@ -357,11 +357,9 @@ napi_value audioSend(napi_env env, napi_callback_info info) {
      size_t length;
      c->status = napi_get_buffer_info(env, audioBuffer, &data, &length);
      REJECT_RETURN;
-     c->audioFrame.p_data = (uint8_t*) data;
+     c->audioFrame.p_data = (float_t *) data;
      c->status = napi_create_reference(env, audioBuffer, 1, &c->sourceBufferRef);
      REJECT_RETURN;
-    // TODO: check length
-
 
 
   } else REJECT_ERROR_RETURN(
